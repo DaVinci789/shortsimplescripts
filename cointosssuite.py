@@ -1,6 +1,6 @@
 # Coin Toss by DaVinci789
 # Help this project on GitHub
-# davinci789 / cointosssuite
+# DaVinci789 / shortsimplescripts
 # Written in Python 3
 
 import random
@@ -8,17 +8,6 @@ import random
 coin = ["heads", "tails"]
 randevents = ["normal","rolling", "disappeared"]
 randoutcomes = ["normal","stuck", "lost"]
-
-#def titlescreen():
-#    print("TITLE SCREEN GOES HERE, PROBABLY USE A FOR LOOP.")
-#    print("")
-#    print("                                                                                           TITLE")
-#    print("")
-#    print("")
-#    print("")
-#    print("")
-#    print("")
-#    print("                                                                                   1) List games")
 
 # main function that every outcome returns to
 def main():
