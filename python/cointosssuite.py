@@ -1,6 +1,10 @@
-# Coin Toss by DaVinci789
+# Coin Toss v0.1 by DaVinci789
 # Help this project on GitHub
+<<<<<<< HEAD
 # DaVinci789 / shortsimplescripts / python / cointosssuite.py
+=======
+# DaVinci789 / shortsimplescripts / cointosssuite.py
+>>>>>>> 35a20e829984f3f807e31ee3fad7eedb172f819f
 # Written in Python 3
 
 import random
