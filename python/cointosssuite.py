@@ -1,10 +1,18 @@
 # Coin Toss v0.1 by DaVinci789
 # Help this project on GitHub
+<<<<<<< HEAD:cointosssuite.py
+#<<<<<< HEAD
+# DaVinci789 / shortsimplescripts / python / cointosssuite.py
+#======
+# DaVinci789 / shortsimplescripts / cointosssuite.py
+#>>>>>> 35a20e829984f3f807e31ee3fad7eedb172f819f
+=======
 <<<<<<< HEAD
 # DaVinci789 / shortsimplescripts / python / cointosssuite.py
 =======
 # DaVinci789 / shortsimplescripts / cointosssuite.py
 >>>>>>> 35a20e829984f3f807e31ee3fad7eedb172f819f
+>>>>>>> dc34999327884045a8f64e3282f8d12cb0901570:python/cointosssuite.py
 # Written in Python 3
 
 import random
@@ -14,10 +22,18 @@ coin = ["heads", "tails"]
 randevents = ["normal","rolling", "disappeared"]
 randoutcomes = ["normal","stuck", "lost"]
 game_list = ["Heads or Tails", "Heads or Tails Classic", "Debug it you nasty cheater!"]
+<<<<<<< HEAD:cointosssuite.py
+gamenum = 0
+=======
+>>>>>>> dc34999327884045a8f64e3282f8d12cb0901570:python/cointosssuite.py
 
 def titlescreen():
     global ui
     global gamenum
+<<<<<<< HEAD:cointosssuite.py
+    os.system('cls' if os.name == 'nt' else 'clear')
+=======
+>>>>>>> dc34999327884045a8f64e3282f8d12cb0901570:python/cointosssuite.py
     print("                            /$$$$$$            /$$                 /$$$$$$$$                                  /$$$$$$            /$$   /$$")
     print("                           /$$__  $$          |__/                |__  $$__/                                 /$$__  $$          |__/  | $$")
     print("                          | $$  \__/  /$$$$$$  /$$ /$$$$$$$          | $$  /$$$$$$   /$$$$$$$ /$$$$$$$      | $$  \__/ /$$   /$$ /$$ /$$$$$$    /$$$$$$")
@@ -35,11 +51,30 @@ def titlescreen():
     if ui == 1:
         for name in game_list:
             print(name)
+<<<<<<< HEAD:cointosssuite.py
+        while True:
+            try:
+                ui = int(input("Please enter the # of your game (0 to exit): "))
+                if ui == 1:
+                    main()
+                elif ui == 2:
+                    main1()
+                elif ui == 3:
+                    main2()
+                elif ui == 0:
+                    titlescreen()
+                else:
+                    print("Game not found")
+                break
+            except ValueError:
+                print("Not a #")
+=======
 
         ui = int(input("What game # would you like to choose?: "))
         gamenum = 0
         gamenum = game_list[ui]
         main()
+>>>>>>> dc34999327884045a8f64e3282f8d12cb0901570:python/cointosssuite.py
     elif ui == 2:
         print("That option is not avalible at this moment")
     elif ui == 3:
@@ -53,6 +88,7 @@ def titlescreen():
 def main():
     global ui
     global side
+    global gamenum
     ui = input("Heads or Tails?: ").lower()
     side = random.choice(coin)
     # debug: print(side)
