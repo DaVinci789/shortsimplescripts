@@ -1,13 +1,49 @@
 # Coin Toss by DaVinci789
 # Help this project on GitHub
-# davinci789 / cointosssuite
+# DaVinci789 / shortsimplescripts / python / cointosssuite.py
 # Written in Python 3
 
 import random
+import os
 # define lists for the coin side and events + outcomes
 coin = ["heads", "tails"]
 randevents = ["normal","rolling", "disappeared"]
 randoutcomes = ["normal","stuck", "lost"]
+game_list = ["Heads or Tails", "Heads or Tails Classic", "Debug it you nasty cheater!"]
+
+def titlescreen():
+    global ui
+    global gamenum
+    print("                            /$$$$$$            /$$                 /$$$$$$$$                                  /$$$$$$            /$$   /$$")
+    print("                           /$$__  $$          |__/                |__  $$__/                                 /$$__  $$          |__/  | $$")
+    print("                          | $$  \__/  /$$$$$$  /$$ /$$$$$$$          | $$  /$$$$$$   /$$$$$$$ /$$$$$$$      | $$  \__/ /$$   /$$ /$$ /$$$$$$    /$$$$$$")
+    print("                          | $$       /$$__  $$| $$| $$__  $$         | $$ /$$__  $$ /$$_____//$$_____/      |  $$$$$$ | $$  | $$| $$|_  $$_/   /$$__  $$")
+    print("                          | $$      | $$  \ $$| $$| $$  \ $$         | $$| $$  \ $$|  $$$$$$|  $$$$$$        \____  $$| $$  | $$| $$  | $$    | $$$$$$$$")
+    print("                          | $$    $$| $$  | $$| $$| $$  | $$         | $$| $$  | $$ \____  $$\____  $$       /$$  \ $$| $$  | $$| $$  | $$ /$$| $$_____/")
+    print("                          |  $$$$$$/|  $$$$$$/| $$| $$  | $$         | $$|  $$$$$$/ /$$$$$$$//$$$$$$$/      |  $$$$$$/|  $$$$$$/| $$  |  $$$$/|  $$$$$$$")
+    print("                           \______/  \______/ |__/|__/  |__/         |__/ \______/ |_______/|_______/        \______/  \______/ |__/   \___/   \_______/")
+    print("\n\n\n\n\n\n\n\n\n\n1) List Games")
+    print("2) Options")
+    print("3) Help")
+    print("4) Exit")
+    ui = 0
+    ui = int(input(": "))
+    if ui == 1:
+        for name in game_list:
+            print(name)
+
+        ui = int(input("What game # would you like to choose?: "))
+        gamenum = 0
+        gamenum = game_list[ui]
+        main()
+    elif ui == 2:
+        print("That option is not avalible at this moment")
+    elif ui == 3:
+        os.exit()
+    else:
+        print("Wat")
+        os.system('cls' if os.name == 'nt' else 'clear')
+        titlescreen()
 
 # main function that every outcome returns to
 def main():
@@ -18,11 +54,12 @@ def main():
     # debug: print(side)
     # start random outcomes
     startrand = random.randint(0 , 52)
-    if startrand >= 39:
-        randevents_events()
-    # goto normal ending if not equal
-    else:
-        finaloutcome(0)
+    if gamenum == 0 or gamenum == 2:
+        if startrand >= 39:
+            randevents_events()
+        # goto normal ending if not equal
+        else:
+            finaloutcome(0)
 
 # random events chooser
 def randevents_events():
@@ -90,6 +127,7 @@ def finaloutcome(result):
             if ui == "heads":
                 print("The coin bounces and rolls before falling of the table. When you go and check on it it reveals tails")
                 print("Arrgh! You Lose.")
+                main()
     elif result == 4:
         # rolling, stuck
         print("The coin rolls for a while before finally stopping on its edge. What?!")
@@ -132,5 +170,5 @@ def finaloutcome(result):
         # out of bounds
         print("DEBUG ERROR: result IS OUT OF BOUNDS")
         main()
-
-main()
+titlescreen()
+#main()
