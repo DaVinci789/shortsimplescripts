@@ -5,6 +5,7 @@
 
 import random
 import os
+import sys
 # define lists for the coin side and events + outcomes
 coin = ["heads", "tails"]
 randevents = ["normal","rolling", "disappeared"]
@@ -16,52 +17,59 @@ def titlescreen():
     global ui
     global gamenum
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("                            /$$$$$$            /$$                 /$$$$$$$$                                  /$$$$$$            /$$   /$$")
-    print("                           /$$__  $$          |__/                |__  $$__/                                 /$$__  $$          |__/  | $$")
-    print("                          | $$  \__/  /$$$$$$  /$$ /$$$$$$$          | $$  /$$$$$$   /$$$$$$$ /$$$$$$$      | $$  \__/ /$$   /$$ /$$ /$$$$$$    /$$$$$$")
-    print("                          | $$       /$$__  $$| $$| $$__  $$         | $$ /$$__  $$ /$$_____//$$_____/      |  $$$$$$ | $$  | $$| $$|_  $$_/   /$$__  $$")
-    print("                          | $$      | $$  \ $$| $$| $$  \ $$         | $$| $$  \ $$|  $$$$$$|  $$$$$$        \____  $$| $$  | $$| $$  | $$    | $$$$$$$$")
-    print("                          | $$    $$| $$  | $$| $$| $$  | $$         | $$| $$  | $$ \____  $$\____  $$       /$$  \ $$| $$  | $$| $$  | $$ /$$| $$_____/")
-    print("                          |  $$$$$$/|  $$$$$$/| $$| $$  | $$         | $$|  $$$$$$/ /$$$$$$$//$$$$$$$/      |  $$$$$$/|  $$$$$$/| $$  |  $$$$/|  $$$$$$$")
-    print("                           \______/  \______/ |__/|__/  |__/         |__/ \______/ |_______/|_______/        \______/  \______/ |__/   \___/   \_______/")
+
+    print("                                             /$$$$$$            /$$                 /$$$$$$$$                                  /$$$$$$            /$$   /$$")
+    print("                                            /$$__  $$          |__/                |__  $$__/                                 /$$__  $$          |__/  | $$")
+    print("                                           | $$  \__/  /$$$$$$  /$$ /$$$$$$$          | $$  /$$$$$$   /$$$$$$$ /$$$$$$$      | $$  \__/ /$$   /$$ /$$ /$$$$$$    /$$$$$$")
+    print("                                           | $$       /$$__  $$| $$| $$__  $$         | $$ /$$__  $$ /$$_____//$$_____/      |  $$$$$$ | $$  | $$| $$|_  $$_/   /$$__  $$")
+    print("                                           | $$      | $$  \ $$| $$| $$  \ $$         | $$| $$  \ $$|  $$$$$$|  $$$$$$        \____  $$| $$  | $$| $$  | $$    | $$$$$$$$")
+    print("                                           | $$    $$| $$  | $$| $$| $$  | $$         | $$| $$  | $$ \____  $$\____  $$       /$$  \ $$| $$  | $$| $$  | $$ /$$| $$_____/")
+    print("                                           |  $$$$$$/|  $$$$$$/| $$| $$  | $$         | $$|  $$$$$$/ /$$$$$$$//$$$$$$$/      |  $$$$$$/|  $$$$$$/| $$  |  $$$$/|  $$$$$$$")
+    print("                                            \______/  \______/ |__/|__/  |__/         |__/ \______/ |_______/|_______/        \______/  \______/ |__/   \___/   \_______/")
+
     print("\n\n\n\n\n\n\n\n\n\n1) List Games")
     print("2) Options")
     print("3) Help")
     print("4) Exit")
     ui = 0
     ui = int(input(": "))
-    if ui == 1:
-        for name in game_list:
-            print(name)
-        while True:
-            try:
-                ui = int(input("Please enter the # of your game (0 to exit): "))
-                if ui == 1:
-                    main()
-                elif ui == 2:
-                    main1()
-                elif ui == 3:
-                    main2()
-                elif ui == 0:
-                    titlescreen()
-                else:
-                    print("Game not found")
-                break
-            except ValueError:
-                print("Not a #")
+    while True:
+        if ui == 1:
+            for name in game_list:
+                print(name)
 
-        ui = int(input("What game # would you like to choose?: "))
-        gamenum = 0
-        gamenum = game_list[ui]
-        main()
-    elif ui == 2:
-        print("That option is not avalible at this moment")
-    elif ui == 3:
-        os.exit()
-    else:
-        print("Wat")
-        os.system('cls' if os.name == 'nt' else 'clear')
-        titlescreen()
+            while True:
+                try:
+                    ui = int(input("Please enter the # of your game (0 to exit): "))
+                    if ui == 1:
+                        main()
+                    elif ui == 2:
+                        main1()
+                    elif ui == 3:
+                        main2()
+                    elif ui == 0:
+                        titlescreen()
+                    else:
+                        print("Game not found")
+                    break
+                except ValueError:
+                    print("Not a #")
+
+            ui = int(input("What game # would you like to choose?: "))
+            gamenum = 0
+            gamenum = game_list[ui]
+            main()
+        elif ui == 2:
+            print("That option is not avalible at this moment")
+            titlescreen()
+        elif ui == 3:
+            sys.exit(0)
+        else:
+            print("Not a possible answer")
+            os.system('cls' if os.name == 'nt' else 'clear')
+            titlescreen()
+        except ValueError:
+            print("Not a valid choice")
 
 # main function that every outcome returns to
 def main():
@@ -70,7 +78,7 @@ def main():
     global gamenum
     ui = input("Heads or Tails?: ").lower()
     side = random.choice(coin)
-    # debug: print(side)
+    print(side)
     # start random outcomes
     startrand = random.randint(0 , 52)
     if gamenum == 0 or gamenum == 2:
@@ -101,7 +109,7 @@ def randevents_events():
 
 # the function that actually chooses the outcome
 def randevents_outcomes(event):
-    outcome = random.randint(0, 9)
+    outcome = random.randint(0, 8)
     for result in range(0, 2):
         if result == event:
             final = result + outcome
