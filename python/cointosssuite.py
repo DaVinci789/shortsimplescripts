@@ -31,43 +31,43 @@ def titlescreen():
     print("2) Options")
     print("3) Help")
     print("4) Exit")
-    ui = 0
-    ui = int(input(": "))
     while True:
-        if ui == 1:
-            for name in game_list:
-                print(name)
+        try:
+            ui = int(input(": "))
+            if ui == 1:
+                for name in game_list:
+                    print(name)
 
-            while True:
-                try:
-                    ui = int(input("Please enter the # of your game (0 to exit): "))
-                    if ui == 1:
-                        main()
-                    elif ui == 2:
-                        main1()
-                    elif ui == 3:
-                        main2()
-                    elif ui == 0:
-                        titlescreen()
-                    else:
-                        print("Game not found")
-                    break
-                except ValueError:
-                    print("Not a #")
+                while True:
+                    try:
+                        ui = int(input("Please enter the # of your game (0 to exit): "))
+                        if ui == 1:
+                            gamenum = 1
+                            main()
+                        elif ui == 2:
+                            gamenum = 2
+                            main1()
+                        elif ui == 3:
+                            gamenum = 3
+                            main2()
+                        elif ui == 0:
+                            titlescreen()
+                        else:
+                            print("Game not found")
+                        break
+                    except ValueError:
+                        print("Not a #")
 
-            ui = int(input("What game # would you like to choose?: "))
-            gamenum = 0
-            gamenum = game_list[ui]
-            main()
-        elif ui == 2:
-            print("That option is not avalible at this moment")
-            titlescreen()
-        elif ui == 3:
-            sys.exit(0)
-        else:
-            print("Not a possible answer")
-            os.system('cls' if os.name == 'nt' else 'clear')
-            titlescreen()
+            elif ui == 2:
+                print("That option is not avalible at this moment")
+                titlescreen()
+            elif ui == 3:
+                print("This is a set of games based on random luck game of flipping a coin.")
+                print("v0.01")
+            else:
+                print("Not a possible answer")
+                os.system('cls' if os.name == 'nt' else 'clear')
+                titlescreen()
         except ValueError:
             print("Not a valid choice")
 
