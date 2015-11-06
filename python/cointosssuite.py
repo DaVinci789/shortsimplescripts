@@ -1,4 +1,4 @@
-# Coin Toss v0.1 by DaVinci789
+# Coin Toss v0.3 by DaVinci789
 # Help this project on GitHub
 # DaVinci789 / shortsimplescripts / python / cointosssuite.py
 # Written in Python 3
@@ -10,7 +10,7 @@ import sys
 coin = ["heads", "tails"]
 randevents = ["normal","rolling", "disappeared"]
 randoutcomes = ["normal","stuck", "lost"]
-game_list = ["Heads or Tails", "Heads or Tails Classic", "Debug it you nasty cheater!"]
+game_list = ["Heads or Tails", "Heads or Tails Classic", "Debug version you nasty cheater!"]
 gamenum = 0
 
 def titlescreen():
@@ -42,14 +42,14 @@ def titlescreen():
                     try:
                         ui = int(input("Please enter the # of your game (0 to exit): "))
                         if ui == 1:
-                            gamenum = 1
+                            gamenum = 0
                             main()
                         elif ui == 2:
-                            gamenum = 2
+                            gamenum = 1
                             main1()
                         elif ui == 3:
-                            gamenum = 3
-                            main2()
+                            gamenum = 2
+                            main()
                         elif ui == 0:
                             titlescreen()
                         else:
@@ -64,6 +64,9 @@ def titlescreen():
             elif ui == 3:
                 print("This is a set of games based on random luck game of flipping a coin.")
                 print("v0.01")
+            elif ui == 4:
+                os.system('cls' if os.name == 'nt' else 'clear')
+                sys.exit()
             else:
                 print("Not a possible answer")
                 os.system('cls' if os.name == 'nt' else 'clear')
@@ -78,15 +81,40 @@ def main():
     global gamenum
     ui = input("Heads or Tails?: ").lower()
     side = random.choice(coin)
-    print(side)
+    if gamenum == 2:
+        debug = input("Would you like to change the coin's side? ")
+        if debug == 'y':
+            debug = input("side = ")
+            side = debug
+            #input("Would you like to change the variable "startrand/"
+    if gamenum == 2:
+        print(side)
+        dui = input("Would you like to change the random outcome?")
+        if dui == 'y':
+            dui = int(input("(1-9)result = "))
+            finaloutcome(dui)
+        else:
+            pass
+    else:
+        pass
     # start random outcomes
     startrand = random.randint(0 , 52)
-    if gamenum == 0 or gamenum == 2:
+    if gamenum == 0:
         if startrand >= 39:
             randevents_events()
         # goto normal ending if not equal
         else:
             finaloutcome(0)
+    elif gamenum == 2:
+         print(startrand)
+         if startrand >= 39:
+            randevents_events()
+        # goto normal ending if not equal
+         else:
+            finaloutcome(0)
+
+    else:
+        finaloutcome(0)
 
 # random events chooser
 def randevents_events():
@@ -126,6 +154,8 @@ def finaloutcome(result):
         if ui == side:
                 print("The coin you threw landed back into your hand and produced",ui,".")
                 print("You Win.")
+                print(ui)
+                print(side)
                 main()
         else:
             if ui == coin[0]:
